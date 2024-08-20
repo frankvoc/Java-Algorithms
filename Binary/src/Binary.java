@@ -1,7 +1,6 @@
 package Binary.src;
 
 public class Binary implements Sorting {
-    @Override
     public void sort(int[] array) {
         if (array == null || array.length < 2) {
             return; //array is already sorted or invalid

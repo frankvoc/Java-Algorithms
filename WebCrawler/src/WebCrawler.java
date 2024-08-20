@@ -55,7 +55,6 @@ public class WebCrawler {
             java.net.URL url = new java.net.URL(urlString);
             Scanner input = new Scanner(url.openStream());
             int current = 0;
-            input.close();
             while (input.hasNext()) {
                 String line = input.nextLine();
                 current = line.indexOf("https:", current);

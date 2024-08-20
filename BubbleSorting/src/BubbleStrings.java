@@ -1,7 +1,6 @@
 package BubbleSorting.src;
 
 public class BubbleStrings {
-
     //sort Strings and time how long
     String[] data = {"cat", "Apple", "apple", "George", "NEIT"};
 
