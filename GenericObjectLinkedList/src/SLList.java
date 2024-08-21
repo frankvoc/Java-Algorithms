@@ -10,7 +10,7 @@ public class SLList {
     }
     public void printAll(java.io.PrintStream out){
         for(SLLNode tmp = head; tmp!=null;tmp=tmp.next)
-        out.print(tmp.info);
+        out.println(tmp.info);
     }
     public void add (Object el){
         head = new SLLNode(el,head);
@@ -20,7 +20,7 @@ public class SLList {
         for(; tmp !=null && !el.equals(tmp.info);tmp = tmp.next);
             if(tmp == null)
             return null;
-            else return tmp.info;
+        else return tmp.info;
     }
     public Object delteHead(){
         Object el = head.info;
