@@ -1,14 +1,16 @@
 public class StatisticsDisplay implements Observer, DisplayElement{
     private float temperature;
     private float humidity;
-    private Subject weatherData;
-    public StatisticsDisplay (Subject weatherData){
+    private WeatherData weatherData;
+    public StatisticsDisplay (WeatherData weatherData){
         this.weatherData = weatherData;
+        //register this 
         weatherData.registerObserver(this);
     }
-    public void update(float temperature, float humidity, float pressure){
-        this.temperature = temperature;
-        this.humidity = humidity;
+    //pull approach
+    public void update(){
+        this.temperature = weatherData.getTemperature();
+        this.humidity = weatherData.getHumidity();
         display();
     }
     public void display(){
