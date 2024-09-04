@@ -3,13 +3,13 @@ public class HorizontalScrollBarDecorator extends WindowDecorator{
         super(decoratedWindow);
     }
     public void draw(){
-        super.draw();
+        decoratedWindow.draw();
         drawHorizontalScrollBar();
     }
     private void drawHorizontalScrollBar(){
         System.out.println("Adding a Horizontal Scroll bar!");
     }
     public String getDescription(){
-        return super.getDescription() + " with a horizontal scroll bar";
+        return decoratedWindow.getDescription() + " with a horizontal scroll bar";
     }
 }

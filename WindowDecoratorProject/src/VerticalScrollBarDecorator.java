@@ -3,14 +3,14 @@ public class VerticalScrollBarDecorator  extends WindowDecorator{
         super(decoratedWindow);
     }
     public void draw(){
-        super.draw();
+        decoratedWindow.draw();
         drawVerticalScrollBar();
     }
     private void drawVerticalScrollBar(){
         System.out.println("Adding a Vertical Scroll bar!");
     }
     public String getDescription(){
-        return super.getDescription() + " with a vertical scroll bar";
+        return decoratedWindow.getDescription() + " with a vertical scroll bar";
     }
 }
 
