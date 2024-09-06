@@ -2,13 +2,13 @@ public class RemoteControllerTest {
     public static void main(String[] args) {
         //Lights
         SimpleRemoteControl remote = new SimpleRemoteControl();
-        Light light = new Light();
-        LightOnCommand lightOn = new LightOnCommand(light);
+        Lights lights = new Lights();
+        LightOnCommand lightOn = new LightOnCommands(lights);
         remote.setCommand(lightOn);
         remote.buttonWasPressed();
         //Garage door
         GarageDoor garageDoor = new GarageDoor();
-        GarageDoorOpenCommand garageDoorOpen = new GarageDoorOpenCommand(garageDoor);
+        GarageDoorOpenCommands garageDoorOpen = new GarageDoorOpenCommands(garageDoor);
         remote.setCommand(garageDoorOpen);
         remote.buttonWasPressed();
     }
