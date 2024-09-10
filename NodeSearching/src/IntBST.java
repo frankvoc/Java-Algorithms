@@ -46,6 +46,13 @@ public class IntBST {
             }
         }
     }
+    public void inOrder(IntBSTNode p){
+        if(p != null){
+            inOrder(p.left);
+            visit(p);
+            inOrder(p.right);
+        }
+    }
     public static void main(String[] args) {
         IntBST myTree = new IntBST();
 
@@ -57,7 +64,12 @@ public class IntBST {
         myTree.inset(20);
         myTree.inset(31);
         myTree.inset(29);
-        System.out.println(myTree.search(myTree.root, 2).key);
+
+        myTree.breadthFirst();
+
+        //myTree.inOrder(myTree.root);
+
+        //System.out.println(myTree.search(myTree.root, 2).key);
 
     }
 }
