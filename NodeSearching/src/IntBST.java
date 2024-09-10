@@ -53,6 +53,40 @@ public class IntBST {
             inOrder(p.right);
         }
     }
+    public void deleteByMerging(int el){
+        IntBSTNode tmp, node, p = root, prev = null;
+        while(p != null && p.key != el){
+            prev = p;
+            if(p.key < el)
+                p = p.right;
+            else
+                p = p.left;
+        }
+        node = p;
+        if (p != null && p.key == el){
+            if(node.right == null)
+                node = node.left;
+            else if (node.left == null)
+                node = node.right;
+            else {
+                tmp = node.left;
+                while(tmp.right != null)
+                    tmp = tmp.right;
+                tmp.right = node.right;
+                node = node.left;
+            }
+            if(p ==root)
+                root = node;
+            else if(prev.left == p)
+                prev.left = node;
+            else
+                prev.right = node;
+        }
+        else if (root != null)
+            System.out.print("key " + el + " is not in the tree");
+        else
+            System.out.print("Empty");
+    }
     public static void main(String[] args) {
         IntBST myTree = new IntBST();
 
@@ -64,8 +98,12 @@ public class IntBST {
         myTree.inset(20);
         myTree.inset(31);
         myTree.inset(29);
-
-        myTree.breadthFirst();
+        System.out.println("Tree in order before deleting leaf 31");
+        myTree.inOrder(myTree.root);
+        myTree.deleteByMerging(31);
+        System.out.println("\n Tree in order after deleting leaf 31");
+        myTree.inOrder(myTree.root);
+        //myTree.breadthFirst();
 
         //myTree.inOrder(myTree.root);
 
