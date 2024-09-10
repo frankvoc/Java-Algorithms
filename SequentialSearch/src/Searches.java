@@ -1,3 +1,5 @@
+package SequentialSearch.src;
+
 public class Searches {
     String[][] data = {
         {"K0", "Abby Linc", "18", "al@ch.org"},
@@ -86,19 +88,43 @@ public class Searches {
         System.out.println("Elapsed time: "+ elapsed);
         return sum;
     }
-    String[][] datahashed = new String[150][4];
+    String[][] datahashed = new String[135][4];
 
     public int hash(String keyToSearch){
         int readCount = 0;
         System.out.println("Searching for "+ keyToSearch + " using hash");
         int foundAtIndex = hashRoutine(keyToSearch);
-        for (int i = 0; i < datahashed.length; i++) {
-            readCount++;
-        }
+        //for (int i = 0; i < datahashed.length; i++) {
+        //    readCount++;
+        //}
         System.out.println("Key: " + keyToSearch + " is found at index" + foundAtIndex);
         System.out.println(" after " + readCount + " reads");
         return foundAtIndex;
     }
+    public int divideMethod(String keyToSearch) {
+        long start, stop, elapsed;
+        start = System.nanoTime();
+        int len = keyToSearch.length();
+        int sum = 0;
+    
+        //calculate the sum of ASCII values
+        for (int i = 0; i < len; i++) {
+            //get ASCII value of each character
+            int decVal = keyToSearch.charAt(i); 
+             //the ASCII values
+            sum = sum + decVal;
+            System.out.println("Char " + keyToSearch.charAt(i) + " = " + decVal);
+        }
+    
+        stop = System.nanoTime();
+        elapsed = stop - start;
+        System.out.println("Elapsed time: " + elapsed);
+    
+        //modulo operation % to ensure result is between 0 and 9
+        sum = sum % 10; 
+        return sum;
+    }
+    
     public String displayRecords(int index){
         return "Record: " 
             + data[index][0]
@@ -121,18 +147,24 @@ public class Searches {
     }
     public static void main(String[] args) {
         Searches search = new Searches();
-        for(int i=0;i<search.data.length; i++){
-            int generatedHashIndex = search.hashRoutine(search.data[i][0]);
-            search.datahashed[generatedHashIndex][0] = search.data[i][0];
-            search.datahashed[generatedHashIndex][1] = search.data[i][1];
-            search.datahashed[generatedHashIndex][2] = search.data[i][2];
-            search.datahashed[generatedHashIndex][3] = search.data[i][3];
-        }
-        int rowItWasFound = search.hash("K9");
-        if (rowItWasFound != -1) {
-            System.out.println(search.displayHashedRecords(rowItWasFound));
-        } else {
-            System.out.println("Record not found.");
-        }
+        String keyToSearch = "K";
+        int hashValue = search.divideMethod(keyToSearch);
+        System.out.println("Hashed value for: " + keyToSearch);
+        // for(int i=0;i<search.data.length; i++){
+        //     System.out.println(search.divideMethod("K9"+ Integer.toString(i)));
+        // }
+        // for(int i=0;i<search.data.length; i++){
+        //     int generatedHashIndex = search.hashRoutine(search.data[i][0]);
+        //     search.datahashed[generatedHashIndex][0] = search.data[i][0];
+        //     search.datahashed[generatedHashIndex][1] = search.data[i][1];
+        //     search.datahashed[generatedHashIndex][2] = search.data[i][2];
+        //     search.datahashed[generatedHashIndex][3] = search.data[i][3];
+        // }
+        // int rowItWasFound = search.hash("K9");
+        // if (rowItWasFound != -1) {
+        //     System.out.println(search.displayHashedRecords(rowItWasFound));
+        // } else {
+        //     System.out.println("Record not found.");
+        // }
     }
 }
