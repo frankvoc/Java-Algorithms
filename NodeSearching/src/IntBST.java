@@ -31,6 +31,21 @@ public class IntBST {
             else p = p.right;
         return null;
     }
+    public void breadthFirst(){
+        IntBSTNode p = root;
+        Queue queue = new Queue();
+        if (p != null){
+            queue.enqueue(p);
+            while (!queue.isEmpty()){
+                p = (IntBSTNode) queue.dequeue();
+                visit(p);
+                if(p.left != null)
+                    queue.enqueue(p.left);
+                if(p.right != null)
+                    queue.enqueue(p.right);
+            }
+        }
+    }
     public static void main(String[] args) {
         IntBST myTree = new IntBST();
 
